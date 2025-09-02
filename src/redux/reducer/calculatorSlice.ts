@@ -1,0 +1,49 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
+interface CalculatorState {
+  bill: number;
+  people: number;
+  tipPercentage: number;
+  tipAmountPerPerson: number;
+  totalPerPerson: number;
+}
+
+const initialState: CalculatorState = {
+  bill: 0,
+  people: 1,
+  tipPercentage: 0,
+  tipAmountPerPerson: 0,
+  totalPerPerson: 0,
+};
+
+export const calculatorSlice = createSlice({
+  name: 'calculator',
+  initialState,
+  reducers: {
+    setBill: (state, action: PayloadAction<number>) => {
+      state.bill = action.payload;
+    },
+    setPeople: (state, action: PayloadAction<number>) => {
+      state.people = action.payload;
+    },
+    setTipPercentage: (state, action: PayloadAction<number>) => {
+      state.tipPercentage = action.payload;
+    },
+    calculateTotals: (state) => {
+      if (state.people > 0 && state.bill > 0) {
+        const tipAmount = state.bill * (state.tipPercentage / 100);
+        state.tipAmountPerPerson = tipAmount / state.people;
+        state.totalPerPerson = (state.bill + tipAmount) / state.people;
+      } else {
+        state.tipAmountPerPerson = 0;
+        state.totalPerPerson = 0;
+      }
+    },
+    reset: () => initialState,
+  },
+});
+
+export const { setBill, setPeople, setTipPercentage, calculateTotals, reset } =
+  calculatorSlice.actions;
+
+export default calculatorSlice.reducer;
