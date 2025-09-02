@@ -1,0 +1,37 @@
+interface Props {
+  label: string;
+  value: number | string;
+  iconUrl: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Input = ({ label, value, iconUrl, onChange }: Props) => {
+  return (
+    <div className="flex flex-col mb-7 m-0 ">
+      <div className="flex">
+        <label
+          className=" font-bold text-gray-500"
+          htmlFor={label.toLocaleLowerCase()}
+        >
+          {label}
+        </label>
+      </div>
+
+      <div className="relative">
+        <input
+          id={label.toLocaleLowerCase()}
+          className="bg-Grey-50 rounde-[5px] focus:outline-Green-400 cursor-pointer h-10 text-right pr-4 text-2xl font-bold text-green-900 w-full"
+          type="text"
+          value={value || 0}
+          onChange={onChange}
+        />
+        <img className="absolute top-3 left-2" src={iconUrl} alt="icon" />
+      </div>
+      {value === 0 && (
+        <p className="text-right text-red-500 m-0">Can't be recive</p>
+      )}
+    </div>
+  );
+};
+
+export default Input;
