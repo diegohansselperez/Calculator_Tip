@@ -6,7 +6,7 @@ function App() {
       <main className="">
         <div className="flex justify-center my-10">
           {' '}
-          <img src="/public/images/logo.svg" alt="logo" />
+          <img src="/images/logo.svg" alt="logo" />
         </div>
         <Calculator />
       </main>

@@ -30,9 +30,13 @@ export const calculatorSlice = createSlice({
       state.tipPercentage = action.payload;
     },
     calculateTotals: (state) => {
+      //calcular el total de dinero y sacarle el porcentaje y ese dividirlo entre el numero de personas
       if (state.people > 0 && state.bill > 0) {
         const tipAmount = state.bill * (state.tipPercentage / 100);
+
+        //Porcentaje total de TipAmount entre el numero de personas.
         state.tipAmountPerPerson = tipAmount / state.people;
+        //
         state.totalPerPerson = (state.bill + tipAmount) / state.people;
       } else {
         state.tipAmountPerPerson = 0;

@@ -3,7 +3,6 @@ import Input from './setInput';
 import {
   setBill,
   setPeople,
-  // setTipPercentage,
   calculateTotals,
   //reset,
 } from '../redux/reducer/calculatorSlice';
