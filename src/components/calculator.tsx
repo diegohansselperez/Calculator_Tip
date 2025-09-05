@@ -1,5 +1,5 @@
 import Input from './setInput';
-//import useStateInput from '../hooks/useStateInput';
+
 import {
   setBill,
   setPeople,

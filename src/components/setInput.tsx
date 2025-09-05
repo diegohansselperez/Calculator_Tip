@@ -22,7 +22,8 @@ const Input = ({ label, value, iconUrl, onChange }: Props) => {
           id={label.toLocaleLowerCase()}
           className="bg-Grey-50 rounde-[5px] focus:outline-Green-400 cursor-pointer h-10 text-right pr-4 text-2xl font-bold text-green-900 w-full"
           type="text"
-          value={value || 0}
+          maxLength={5}
+          value={value}
           onChange={onChange}
         />
         <img className="absolute top-3 left-2" src={iconUrl} alt="icon" />

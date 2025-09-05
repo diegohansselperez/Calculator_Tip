@@ -1,7 +1,6 @@
-import React from 'react';
-
+//!ESTE HOOK DE ESTADO LOCAL FUE REEMPLASADO POR REDUX EN UN ESTADO GLOBAL.
 // Define la interfaz para el estado del hook
-interface InputValues {
+/* interface InputValues {
   bill: number | string;
   numberPeople: number | string;
 }
@@ -39,3 +38,4 @@ const useStateInput = (): UseStateInputHook => {
 };
 
 export default useStateInput;
+ */
