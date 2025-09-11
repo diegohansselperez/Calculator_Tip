@@ -9,6 +9,7 @@ import PercentButton from './percentButton';
 import Totals from './Totals';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import React, { useEffect } from 'react';
+import ModalCustom from './modalCustom';
 
 const percents_Numbers: number[] = [5, 10, 15, 25, 50];
 
@@ -47,8 +48,12 @@ export const Calculator = () => {
           {percents_Numbers.map((number) => (
             <PercentButton key={number} percent={number} />
           ))}
-          <PercentButton isCustom={true} percent={0} />{' '}
+          {/* <PercentButton isCustom={true} percent={0} /> */}
+          <button className="transition-colors text-2xl font-bold rounded-[5px] w-full h-12 cursor-pointer bg-Grey-200 text-Grey-500 hover:bg-Grey-50 ">
+            Otro %
+          </button>
         </div>
+        {/* <ModalCustom /> */}
         <Input
           label="Number of People"
           value={people}
