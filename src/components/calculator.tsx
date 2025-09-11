@@ -4,7 +4,6 @@ import {
   setBill,
   setPeople,
   calculateTotals,
-  //reset,
 } from '../redux/reducer/calculatorSlice';
 import PercentButton from './percentButton';
 import Totals from './Totals';

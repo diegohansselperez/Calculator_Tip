@@ -1,11 +1,17 @@
-import { useAppSelector } from '../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { reset } from '../redux/reducer/calculatorSlice';
 import BtnReset from './BtnReset';
 import TotalItem from './TotalItem';
 
 const Totals = () => {
+  const dispatch = useAppDispatch();
   const { totalPerPerson, tipAmountPerPerson } = useAppSelector(
     (state) => state.calculator,
   );
+
+  const handleResetBtn = () => {
+    dispatch(reset());
+  };
 
   console.log('Total por el numero de personas:', totalPerPerson);
   return (
@@ -15,7 +21,7 @@ const Totals = () => {
         <TotalItem text="Total" value={totalPerPerson} />
       </div>
 
-      <BtnReset text="Reset" />
+      <BtnReset handleReset={handleResetBtn} text="Reset" />
     </div>
   );
 };
