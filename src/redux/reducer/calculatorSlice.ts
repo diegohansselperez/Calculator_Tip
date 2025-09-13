@@ -6,6 +6,7 @@ interface CalculatorState {
   tipPercentage: number;
   tipAmountPerPerson: number;
   totalPerPerson: number;
+  isActiveModel: boolean;
 }
 
 const initialState: CalculatorState = {
@@ -14,6 +15,7 @@ const initialState: CalculatorState = {
   tipPercentage: 0,
   tipAmountPerPerson: 0,
   totalPerPerson: 0,
+  isActiveModel: false,
 };
 
 export const calculatorSlice = createSlice({
@@ -43,11 +45,20 @@ export const calculatorSlice = createSlice({
         state.totalPerPerson = 0;
       }
     },
+    ActiveModule: (state, action: PayloadAction<boolean>) => {
+      state.isActiveModel = action.payload;
+    },
     reset: () => initialState,
   },
 });
 
-export const { setBill, setPeople, setTipPercentage, calculateTotals, reset } =
-  calculatorSlice.actions;
+export const {
+  setBill,
+  setPeople,
+  setTipPercentage,
+  calculateTotals,
+  reset,
+  ActiveModule,
+} = calculatorSlice.actions;
 
 export default calculatorSlice.reducer;

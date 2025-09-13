@@ -4,6 +4,7 @@ import {
   setBill,
   setPeople,
   calculateTotals,
+  ActiveModule,
 } from '../redux/reducer/calculatorSlice';
 import PercentButton from './percentButton';
 import Totals from './Totals';
@@ -14,7 +15,9 @@ import ModalCustom from './modalCustom';
 const percents_Numbers: number[] = [5, 10, 15, 25, 50];
 
 export const Calculator = () => {
-  const { bill, people } = useAppSelector((state) => state.calculator);
+  const { bill, people, isActiveModel } = useAppSelector(
+    (state) => state.calculator,
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -29,8 +32,9 @@ export const Calculator = () => {
     dispatch(setPeople(Number(e.target.value)));
   };
 
-  console.log('En Bill:', bill);
-  console.log('en people:', people);
+  const isActiveOther = () => {
+    dispatch(ActiveModule(true));
+  };
 
   return (
     <div className="w-[375px] p-8 m-auto bg-White rounded-[15px] md:w-[608px] md:py-12 md:px-20 lg:flex lg:w-[920px] lg:gap-11 lg:p-8 ">
@@ -49,11 +53,15 @@ export const Calculator = () => {
             <PercentButton key={number} percent={number} />
           ))}
           {/* <PercentButton isCustom={true} percent={0} /> */}
-          <button className="transition-colors text-2xl font-bold rounded-[5px] w-full h-12 cursor-pointer bg-Grey-200 text-Grey-500 hover:bg-Grey-50 ">
+          <button
+            onClick={isActiveOther}
+            type="button"
+            className="transition-colors text-2xl  font-bold rounded-[5px] w-full h-12 cursor-pointer bg-Grey-200 text-Grey-500 hover:bg-Grey-50 "
+          >
             Otro %
           </button>
         </div>
-        {/* <ModalCustom /> */}
+        {isActiveModel && <ModalCustom />}
         <Input
           label="Number of People"
           value={people}
