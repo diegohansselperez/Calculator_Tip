@@ -5,6 +5,7 @@ import {
   setPeople,
   calculateTotals,
   ActiveModule,
+  setTipPercentage,
 } from '../redux/reducer/calculatorSlice';
 import PercentButton from './percentButton';
 import Totals from './Totals';
@@ -34,6 +35,7 @@ export const Calculator = () => {
 
   const isActiveOther = () => {
     dispatch(ActiveModule(true));
+    dispatch(setTipPercentage(0));
   };
 
   return (
