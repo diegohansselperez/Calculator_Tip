@@ -39,7 +39,7 @@ const PercentButton = ({ percent }: Props) => {
   const baseClasses =
     'transition-colors text-2xl font-bold rounded-[5px] w-full h-12 cursor-pointer';
   const activeClasses =
-    'bg-StrongCyan text-VeryDarkCyan opacity-50 cursor-not-allowed'; // Estilos cuando está activo.
+    'bg-StrongCyan text-VeryDarkCyan opacity-50 cursor-not-allowed border-2 border-Grey-200'; // Estilos cuando está activo.
   const inactiveClasses =
     'bg-Green-900 text-Grey-50 hover:bg-green-300 hover:text-Green-900'; // Estilos cuando está inactivo.
 

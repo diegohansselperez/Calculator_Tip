@@ -26,11 +26,33 @@ export const Calculator = () => {
   }, [people, bill, dispatch]);
 
   const handleBill = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setBill(Number(e.target.value)));
+    const inputValue = e.target.value;
+    // 1. Expresión regular que solo permite números (enteros en este caso)
+    //    /^\d*$/  -> Permite una cadena de cero o más dígitos.
+    const numberRegex = /^\d*$/;
+
+    // 2. Probamos si el valor del input cumple con la regla
+    if (numberRegex.test(inputValue)) {
+      // 3. Si es válido, lo convertimos a número y lo despachamos
+      //    Manejamos el caso de que el input esté vacío ('') para convertirlo en 0.
+      const numericValue = inputValue === '' ? 0 : parseInt(inputValue, 10);
+      dispatch(setBill(Number(numericValue)));
+    }
   };
 
   const handlePeople = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setPeople(Number(e.target.value)));
+    const inputValue = e.target.value;
+    // 1. Expresión regular que solo permite números (enteros en este caso)
+    //    /^\d*$/  -> Permite una cadena de cero o más dígitos.
+    const numberRegex = /^\d*$/;
+
+    // 2. Probamos si el valor del input cumple con la regla
+    if (numberRegex.test(inputValue)) {
+      // 3. Si es válido, lo convertimos a número y lo despachamos
+      //    Manejamos el caso de que el input esté vacío ('') para convertirlo en 0.
+      const numericValue = inputValue === '' ? 0 : parseInt(inputValue, 10);
+      dispatch(setPeople(Number(numericValue)));
+    }
   };
 
   const isActiveOther = () => {
